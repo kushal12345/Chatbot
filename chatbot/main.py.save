@@ -1,0 +1,31 @@
+from chatterbot.trainers import ListTrainer
+from chatterbot import conv
+
+#bot = ChatBot('Test',
+#	input_adapter="chatterbot_voice.VoiceInput",
+#	output_adapter="chatterbot_voice.VoiceOutput"
+
+
+conv = open('chats.txt','r').readlines()
+
+bot.set_trainer(ListTrainer)
+ 
+bot.train(conv)
+#bot.train("chatterbot.corpus.english")
+
+while True:
+	request = input('YOU: ')
+	response = bot.get_response(request)
+
+	print ('Bot: ',  response)
+
+#while True:
+ #   try:
+        # Use the parameter None because the VoiceInput adapter
+        # is getting data from audio input instead of a parameter
+ #       bot_input = bot.get_response(None)
+
+    # Press ctrl-c or ctrl-d on the keyboard to exit
+  #  except (KeyboardInterrupt, EOFError, SystemExit):
+ #       break
+
